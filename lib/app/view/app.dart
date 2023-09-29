@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_habijabi_flutter/counter/counter.dart';
+import 'package:project_habijabi_flutter/auth/view/auth_view.dart';
 import 'package:project_habijabi_flutter/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -14,9 +14,10 @@ class App extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
+      debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const AuthView(),
     );
   }
 }
