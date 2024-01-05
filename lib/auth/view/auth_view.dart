@@ -15,13 +15,27 @@ class _AuthViewState extends State<AuthView> {
     channel.invokeMethod('showToast', {'message': 'This is a native toast'});
   }
 
+  final batteryChannel = const MethodChannel('com.shadatrahman/battery');
+
+  Future<void> getBatteryLevel() async {
+    try {
+      final args = <String, dynamic>{'name': 'Shadat'};
+      final result = await batteryChannel.invokeMethod('getBatteryLevel', args);
+      print(result);
+    } on PlatformException catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.error,
       body: Center(
         child: ElevatedButton(
-          onPressed: showToast,
+          onPressed: () {
+            getBatteryLevel();
+          },
           child: const Text('Click Me!'),
         ),
       ),
